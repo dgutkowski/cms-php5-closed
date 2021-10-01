@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='iso-8859-2'?>
+<feed xmlns='http://www.w3.org/2005/Atom'>
+<title>PR clansite | Liga 0</title>
+<subtitle>Ostatnie gry</subtitle>
+<author>
+  <name>GuteK</name>
+</author>
+<updated>2021-09-29T11:38:49+02:00</updated>
+<id>http://localhost/lea.games</id>
+<link rel='self' href='http://localhost/atom-lea.games.xml'/>
+</feed>

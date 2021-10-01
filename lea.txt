@@ -1,0 +1,58 @@
+CREATE TABLE `lea_players`(
+`id` INT NOT NULL AUTO_INCREMENT,
+`user_id` INT,
+`active` INT(1),
+`free` INT(1),
+`score` INT,
+`score_stats` INT,
+`last_stats_score` INT,
+`last_stats_position` INT,
+`wins` INT,
+`lost` INT,
+`medals` TEXT,
+PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `lea_msg`(
+`id` INT NOT NULL AUTO_INCREMENT,
+`message` TEXT,
+`author` INT,
+`challange_id` INT,
+`date` DATETIME,
+`ip` VARCHAR(30),
+PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `lea_settings`(
+`last_stats_date` DATE,
+`rules` TEXT
+);
+
+CREATE TABLE `lea_challanges`(
+`id` INT NOT NULL AUTO_INCREMENT,
+`player1` INT,
+`player2` INT,
+`season` VARCHAR(20),
+`actived` INT DEFAULT '0',
+`nations` VARCHAR(20),
+`start` DATETIME,
+`end` DATETIME,
+`winner` INT,
+`score` INT(1) DEFAULT '0',
+`score_set` INT,
+`accepted` INT(1) DEFAULT '0',
+PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `lea_games`(
+`id` INT NOT NULL AUTO_INCREMENT,
+`player1` INT,
+`player2` INT,
+`season` VARCHAR(20),
+`nations` VARCHAR(20),
+`winner` INT,
+`score` INT DEFAULT '0',
+`date` DATETIME,
+`scored` INT(1),
+PRIMARY KEY(`id`)
+);

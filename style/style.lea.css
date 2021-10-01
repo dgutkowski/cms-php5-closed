@@ -1,0 +1,26 @@
+/* #Tables */
+
+.lea-lp { width:25px; }
+.lea-country { width:50px; }
+.lea-nick { width:112px; }
+.lea-clan { width:100px; }
+.lea-score { width:50px; }
+.lea-perc { width:70px; }
+.lea-games { width:25px; }
+.lea-changes { width:50px;background:#555; }
+
+.medal-block { padding:5px 54px; }
+
+.lea-setwinner { width:200px;margin:0 5px; }
+.lea-setchallange { width:400px;margin:0 5px; }
+.lea-setscore { width:60px; }
+tr td.lea-challangepw { text-align:center;font-weight:bold; }
+tr td.lea-challangepw:hover { background:#D5D7F0; }
+tr td.lea-challangepw a:hover { color:#00D; }
+
+.lea-submitYes { width:50px; }
+.lea-submitNo { width:50px; }
+
+tr.row2 td.lea-challangepw { text-align:center;font-weight:bold; }
+tr.row2 td.lea-challangepw:hover { background:#C0C2DE; }
+tr.row2 td.lea-challangepw a:hover { color:#00D; }
