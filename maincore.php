@@ -35,13 +35,15 @@ define("TIMESTAMP", time());
 
 define("SPECIAL_LVL", 101);
 
+// PHP 7+ mysql* functions doesn't exists. should use of mysqli
+
 $dbconnect = @mysql_connect($dbhost, $dbuser, $dbpass);
 $dbselect = @mysql_select_db($dbname);
 
 if(!$dbconnect) 
-	die("<div style='font-size:14px;font-weight:bold;align:center;'>Nie nawi±zano po³±czenia z baz± danych, w razie d³u¿szych problemów, spróbuj skontaktowaæ siê z administratorem</div>");
+	die("<div style='font-size:14px;font-weight:bold;align:center;'>Nie nawiÂ±zano poÂ³Â±czenia z bazÂ± danych, w razie dÂ³uÂ¿szych problemÃ³w, sprÃ³buj skontaktowaÃ¦ siÃª z administratorem</div>");
 if(!$dbselect) 
-	die("<div style='font-size:14px;font-weight:bold;align:center;'>Nie mo¿na wybraæ potrzebnej bazy danych, w razie d³u¿szych problemów, spróbuj skontaktowaæ siê z administratorem</div>");
+	die("<div style='font-size:14px;font-weight:bold;align:center;'>Nie moÂ¿na wybraÃ¦ potrzebnej bazy danych, w razie dÂ³uÂ¿szych problemÃ³w, sprÃ³buj skontaktowaÃ¦ siÃª z administratorem</div>");
 
 $include = glob("includes/inc.*.php");
 foreach($include as $file)
@@ -130,7 +132,7 @@ function custom_calendar()
 	$CountOfDays = array(31,28,31,30,31,30,31,31,30,31,30,31);
 	if((date('Y')%4) == 0) $CountOfDays[1] = 29;
 	$m['actual'] = date('n')-1;
-	$m['name'] = array('Styczeñ','Luty','Marzec','Kwiecieñ','Maj','Czerwiec','Lipiec','Sierpieñ','Wrzesieñ','Pa¼dziernik','Listopad','Grudzieñ');
+	$m['name'] = array('StyczeÃ±','Luty','Marzec','KwiecieÃ±','Maj','Czerwiec','Lipiec','SierpieÃ±','WrzesieÃ±','PaÂ¼dziernik','Listopad','GrudzieÃ±');
 	$d['actual']['week'] = date('w');
 	$d['actual']['month'] = date('j');
 	$d['first']['week'] = date('w');
@@ -144,7 +146,7 @@ function custom_calendar()
 	while( $test != 1 )
 	{ $d['first']['week'] = $d['first']['week'] - 1;$test = $test-1; if($d['first']['week'] == -1) $d['first']['week'] = 6; }
 	$string.= "      <table class='table0 w100 center'>\n";
-	$string.= "        <tr><td class='calendar-su'>N</td><td class='calendar-th'>P</td><td class='calendar-th'>W</td>\n        <td class='calendar-th'>¦</td><td class='calendar-th'>C</td><td class='calendar-th'>P</td><td class='calendar-st'>S</td></tr>\n";
+	$string.= "        <tr><td class='calendar-su'>N</td><td class='calendar-th'>P</td><td class='calendar-th'>W</td>\n        <td class='calendar-th'>Â¦</td><td class='calendar-th'>C</td><td class='calendar-th'>P</td><td class='calendar-st'>S</td></tr>\n";
 	$string.= "        <tr>";
 	for( $i = 0;$i < $d['first']['week'];$i++){ $string.= "<td></td>"; }
 	$d['printed']['week'] = $d['first']['week'];
@@ -205,7 +207,7 @@ function check_int($value)
 function get_gender($bool)
 {
 	// return a gender from bool value
-	if($bool == 0) return "Mê¿czyzna";
+	if($bool == 0) return "MÃªÂ¿czyzna";
 	if($bool == 1) return "Kobieta";
 }
 
@@ -296,7 +298,7 @@ function banlist_verification()
 			else $reason = "";
 			if( $_SERVER['REMOTE_ADDR'] == $ban['ban_ip'] )
       			{
-				die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>Zosta³e¶ zbanowany. ".$reason."</h3></div>");
+				die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>ZostaÂ³eÂ¶ zbanowany. ".$reason."</h3></div>");
 				return FALSE;
       			}
       			if( !empty($ban['ban_userid']) )
@@ -309,7 +311,7 @@ function banlist_verification()
 				
 				if( $user['id'] == $ban['ban_userid'] )
 				{
-					die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>Zosta³e¶ zbanowany. ".$reason."</h3><br/><a href='logout.php?logout=yes'>Wyloguj</a></div>");
+					die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>ZostaÂ³eÂ¶ zbanowany. ".$reason."</h3><br/><a href='logout.php?logout=yes'>Wyloguj</a></div>");
 					return FALSE;
 				}
 			}
@@ -328,7 +330,7 @@ function banlist_verification()
 			else $reason = "";
 			if( $_SERVER['REMOTE_ADDR'] == $ban['ban_ip'] )
  			{
-				die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>Zosta³e¶ zbanowany. ".$reason."</h3></div>");
+				die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>ZostaÂ³eÂ¶ zbanowany. ".$reason."</h3></div>");
 				return FALSE;
       			}
       			if( !empty($ban['ban_userid']) )
@@ -341,7 +343,7 @@ function banlist_verification()
 				
 				if( $user['id'] == $ban['ban_userid'] )
 				{
-					die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>Zosta³e¶ zbanowany. ".$reason."</h3><br/><a href='logout.php?logout=yes'>Wyloguj</a></div>");
+					die("<div class='err'><img src='images/icons/replies/stop.png' alt=''/><h3>ZostaÂ³eÂ¶ zbanowany. ".$reason."</h3><br/><a href='logout.php?logout=yes'>Wyloguj</a></div>");
 					return FALSE;
 				}
 			}
@@ -355,7 +357,7 @@ function form_rating()
 	$return.= "<select name='vote' style='width:40px;text-align:center;'>\n";
 	$return.= "<option value='5'>5</option><option value='4'>4</option><option value='3'>3</option><option value='2'>2</option><option value='1'>1</option>\n";
 	$return.= "</select>\n";
-	$return.= "<input type='hidden' name='send' value='vote'><input type='submit' class='submit' style='width:50px;' value='Oceñ'/>\n";
+	$return.= "<input type='hidden' name='send' value='vote'><input type='submit' class='submit' style='width:50px;' value='OceÃ±'/>\n";
 	$return.= "</form>\n";
 	
 	return $return;
@@ -441,7 +443,7 @@ function dirsize($path)
 		}
 		closedir($dir);
 	}
-	else return ("<div class='err'><b>B£¡D!</b> nie uda³o siê otworzyæ folderu <b>".$path."</b></div>\n");
+	else return ("<div class='err'><b>BÂ£Â¡D!</b> nie udaÂ³o siÃª otworzyÃ¦ folderu <b>".$path."</b></div>\n");
 	$size = round($size/1048576,2);
 	return $size." MB";
 }
@@ -526,25 +528,25 @@ function atom_convert_league_games($title, $admin, $email)
 	{
 		//	webmade.org
 		//	
-		//  * "a" - Otwiera plik do zapisu Dane bêd± dodawane na koñcu pliku.
-    	//	* "a+" - Otwiera plik do odczytu i zapisu. Dane bêd± dodawane na koñcu pliku.
+		//  * "a" - Otwiera plik do zapisu Dane bÃªdÂ± dodawane na koÃ±cu pliku.
+    	//	* "a+" - Otwiera plik do odczytu i zapisu. Dane bÃªdÂ± dodawane na koÃ±cu pliku.
 	    //	* "r" - Otwiera plik tylko do odczytu.
-	    //	* "r+" - Otwiera plik do odczytu i zapisu. Dane bêd± dodawane na pocz±tku pliku.
-	    //	* "w" - Otwiera plik tylko do zapisu i kasuje poprzedni± zawarto¶æ. Je¶li plik nie istnieje zostanie on stworzony.
-	    //	* "w+" - Otwiera plik do zapisu i odczytu. Zawarto¶æ pliku zostaje skasowana. Je¶li plik nie istnieje zostanie on stworzony.
+	    //	* "r+" - Otwiera plik do odczytu i zapisu. Dane bÃªdÂ± dodawane na poczÂ±tku pliku.
+	    //	* "w" - Otwiera plik tylko do zapisu i kasuje poprzedniÂ± zawartoÂ¶Ã¦. JeÂ¶li plik nie istnieje zostanie on stworzony.
+	    //	* "w+" - Otwiera plik do zapisu i odczytu. ZawartoÂ¶Ã¦ pliku zostaje skasowana. JeÂ¶li plik nie istnieje zostanie on stworzony.
 		
 		if ($file = fopen($file_name, "w"))
 		{
 			if(fwrite($file, $string) !== FALSE)
 			{
-				return "<b>Liga - Gry:</b> - aktualizacja poprawna. Zapisano wiadomo¶ci: ".$i."";
+				return "<b>Liga - Gry:</b> - aktualizacja poprawna. Zapisano wiadomoÂ¶ci: ".$i."";
 			}
-			else return "Zapis do pliku siê nie powiód³";
+			else return "Zapis do pliku siÃª nie powiÃ³dÂ³";
 			fclose($file);
 		}
-		else return "Nie mogê nawi±zaæ po³±czenia z plikiem";
+		else return "Nie mogÃª nawiÂ±zaÃ¦ poÂ³Â±czenia z plikiem";
 	}
-	else return "Do pliku nie mo¿na dopisaæ informacji lub on nie istnieje";
+	else return "Do pliku nie moÂ¿na dopisaÃ¦ informacji lub on nie istnieje";
 }
 
 function atom_convert_news($title, $admin, $email)
@@ -555,7 +557,7 @@ function atom_convert_news($title, $admin, $email)
 	$date = date("c");
 	$string = "<?xml version='1.0' encoding='iso-8859-2'?>\n";
 	$string.= "<feed xmlns='http://www.w3.org/2005/Atom'>\n";
-	$string.= "<title>".htmlspecialchars($title)." | Nowo¶ci</title>\n";
+	$string.= "<title>".htmlspecialchars($title)." | NowoÂ¶ci</title>\n";
 	$string.= "<subtitle>Nowe posty</subtitle>\n";
 	$string.= "<author>\n";
 	$string.= "  <name>".htmlspecialchars(db_get_data("login","users","id",$admin))."</name>\n";
@@ -596,25 +598,25 @@ function atom_convert_news($title, $admin, $email)
 	{
 		//	webmade.org
 		//	
-		//  * "a" - Otwiera plik do zapisu Dane bêd± dodawane na koñcu pliku.
-    	//	* "a+" - Otwiera plik do odczytu i zapisu. Dane bêd± dodawane na koñcu pliku.
+		//  * "a" - Otwiera plik do zapisu Dane bÃªdÂ± dodawane na koÃ±cu pliku.
+    	//	* "a+" - Otwiera plik do odczytu i zapisu. Dane bÃªdÂ± dodawane na koÃ±cu pliku.
 	    //	* "r" - Otwiera plik tylko do odczytu.
-	    //	* "r+" - Otwiera plik do odczytu i zapisu. Dane bêd± dodawane na pocz±tku pliku.
-	    //	* "w" - Otwiera plik tylko do zapisu i kasuje poprzedni± zawarto¶æ. Je¶li plik nie istnieje zostanie on stworzony.
-	    //	* "w+" - Otwiera plik do zapisu i odczytu. Zawarto¶æ pliku zostaje skasowana. Je¶li plik nie istnieje zostanie on stworzony.
+	    //	* "r+" - Otwiera plik do odczytu i zapisu. Dane bÃªdÂ± dodawane na poczÂ±tku pliku.
+	    //	* "w" - Otwiera plik tylko do zapisu i kasuje poprzedniÂ± zawartoÂ¶Ã¦. JeÂ¶li plik nie istnieje zostanie on stworzony.
+	    //	* "w+" - Otwiera plik do zapisu i odczytu. ZawartoÂ¶Ã¦ pliku zostaje skasowana. JeÂ¶li plik nie istnieje zostanie on stworzony.
 		
 		if ($file = fopen($file_name, "w"))
 		{
 			if(fwrite($file, $string) !== FALSE)
 			{
-				return "<b>Newsy:</b> - aktualizacja poprawna. Zapisano wiadomo¶ci: ".$i."";
+				return "<b>Newsy:</b> - aktualizacja poprawna. Zapisano wiadomoÂ¶ci: ".$i."";
 			}
-			else return "Zapis do pliku siê nie powiód³";
+			else return "Zapis do pliku siÃª nie powiÃ³dÂ³";
 			fclose($file);
 		}
-		else return "Nie mogê nawi±zaæ po³±czenia z plikiem";
+		else return "Nie mogÃª nawiÂ±zaÃ¦ poÂ³Â±czenia z plikiem";
 	}
-	else return "Do pliku nie mo¿na dopisaæ informacji lub on nie istnieje";
+	else return "Do pliku nie moÂ¿na dopisaÃ¦ informacji lub on nie istnieje";
 }
 
 function atom_convert_content($string)
